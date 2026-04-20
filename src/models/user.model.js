@@ -8,7 +8,9 @@ export default async function createUser(userData)  {
     apellido: String,
     correo: String,
     password: String
-  });
+  }, { collection: 'users' });
+
+  mongoose.models.users || mongoose.model('users', userSchema, 'users');
 
   console.log("Mario")
   return {
