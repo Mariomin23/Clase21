@@ -1,3 +1,6 @@
+import { registerService } from "../services/user.service.js";
+
 export function register(req, res) {
-  res.json({ message: "Controlador de registro funcionando" });
+  const result = registerService(req.body);
+  res.json(result);
 }

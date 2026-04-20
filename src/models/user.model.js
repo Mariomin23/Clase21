@@ -1,10 +1,16 @@
-import mongoose from "mongoose";
+export default function createUser(userData)  {
 
-const userSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-});
+  console.log("Mario")
+  // Lógica para crear un usuario
+  // Por ejemplo, validar datos y devolver un objeto usuario
+  if (!userData.name || !userData.email) {
+    throw new Error('Nombre y email son requeridos');
+  }
+  return {
+    id: Date.now(), // ID simple basado en timestamp
+    name: userData.name,
+    email: userData.email,
+    createdAt: new Date()
+  };
+}
 
-const User = mongoose.model("User", userSchema);
-
-export default User;
