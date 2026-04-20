@@ -1,4 +1,4 @@
-import { getConnection } from '../config/db.config.js';
+import { dbConfig } from '../config/db.config.js';
 
 export default function createUser(userData)  {
 
@@ -13,7 +13,7 @@ export default function createUser(userData)  {
     name: userData.name,
     email: userData.email,
     createdAt: new Date(),
-    dbStatus: getConnection()
+    dbStatus: dbConfig()
   };
 }
 
