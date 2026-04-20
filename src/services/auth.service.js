@@ -1,9 +1,6 @@
 import userModel from '../models/user.model.js'
-
-export async function registerService(userData){
-const user= await userModel();
-return user.find({});
-}
+import bcrypt from 'bcrypt'
+const saltRounds=10
 export async function registerService(userData) {
     console.log(userData)
     try {

@@ -1,6 +1,12 @@
-import { registerService } from "../services/user.service.js";
+import { registerService } from "../services/auth.service.js";
 
 export function register(req, res) {
-  const result = registerService(req.body);
-  res.json(result);
+ try{
+
+   console.log("holaaaa")
+   const result = registerService(req.body);
+   res.status(400).json(result);
+ }catch(e){
+  console.log(e)
+ }
 }
