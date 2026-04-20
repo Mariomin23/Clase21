@@ -19,5 +19,9 @@ export default async function createUser(userData)  {
     email: userData.email,
     createdAt: new Date()
   };
+
+  const model = mongoose.models.user || mongoose.model('user', userSchema, 'users');
+  await model.init();
+  return model;
 }
 
