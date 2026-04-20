@@ -1,3 +1,5 @@
+import { getConnection } from '../config/db.config.js';
+
 export default function createUser(userData)  {
 
   console.log("Mario")
@@ -10,7 +12,8 @@ export default function createUser(userData)  {
     id: Date.now(), // ID simple basado en timestamp
     name: userData.name,
     email: userData.email,
-    createdAt: new Date()
+    createdAt: new Date(),
+    dbStatus: getConnection()
   };
 }
 
