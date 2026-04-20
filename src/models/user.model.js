@@ -1,20 +1,22 @@
 import { dbConfig } from '../config/db.config.js';
 
-export default async function createUser(userData)  {
+export default async function createUser() {
   const mongoose = await dbConfig();
 
   const userSchema = new mongoose.Schema({
-    nombre: String,
-    apellido: String,
-    correo: String,
-    password: String
-  }, { collection: 'users' });
+    nombre: { type: String, required: true },
+    apellido: { type: String, required: true },
+    email: { type: String, trim: true, lowercase: true },
+    password: { type: String, required: true }
+  }, { collection: 'usuarios' });
 
-  mongoose.models.users || mongoose.model('users', userSchema, 'users');
+  userSchema.index({ email: 1 }, {
+    unique: true });
 
-
-  const model = mongoose.models.user || mongoose.model('user', userSchema, 'users');
+  const modelName = 'usuarios';
+  const model = mongoose.models[modelName] || mongoose.model(modelName, userSchema, 'usuarios');
   await model.init();
+  await model.createIndexes();
   return model;
 }
 
