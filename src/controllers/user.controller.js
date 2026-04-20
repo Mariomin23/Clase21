@@ -1,3 +1,3 @@
-export const register = (req, res) => {
+export function register(req, res) {
   res.json({ message: "Controlador de registro funcionando" });
-};
+}
