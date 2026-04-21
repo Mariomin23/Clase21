@@ -1,6 +1,10 @@
 import userModel from '../models/user.model.js'
 import bcrypt from 'bcrypt'
 const saltRounds=10
+export async function loginService() {
+    return { message: "service de prueba" };
+}
+
 export async function registerService(userData) {
     try {
         const hashedpass = await bcrypt.hash(userData.password, saltRounds);
