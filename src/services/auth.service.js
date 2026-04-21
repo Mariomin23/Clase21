@@ -31,4 +31,14 @@ export async function registerService(userData) {
             message:"usuario NO guardado"
         }
     }
+    export async function loginService(userData) {
+        const {email, password}=userData;
+        console.log("email: ", email)
+        console.log("password: ", password)
+        return{
+            status:200
+            message:'login service'
+        }
+
+    }
 }

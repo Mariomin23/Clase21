@@ -15,7 +15,7 @@ export default async function createUser() {
 
   const modelName = 'usuarios';
   const model = mongoose.models[modelName] || mongoose.model(modelName, userSchema, 'usuarios');
-  await model.init();
+  //await model.init();
   await model.createIndexes();
   return model;
 }
